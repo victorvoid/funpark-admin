@@ -1,0 +1,248 @@
+.table
+  margin 0 0 40px 0
+  width 100%
+  box-shadow 0 1px 3px rgba(0,0,0,0.2)
+  display table
+  @media screen and (max-width: 580px)
+    display block
+
+.row
+  display table-row
+  background-color #f6f6f6
+  &:nth-of-type(odd)
+    background #e9e9e9
+  &.header
+    font-weight 900
+    color #ffffff
+    background #ea6153
+  &.blue
+    background #2980b9
+  @media screen and (max-width: 580px)
+    padding 8px 0
+    display block
+
+.cell
+  padding 6px 12px
+  display table-cell
+  @media screen and (max-width: 580px)
+    padding 2px 12px
+    display block
+
+
+//Cadastro
+.form-cadastrar-content
+  input[type="text"], input[type="number"], input[type="email"]
+    border 1px solid #b9b9b9 
+    height 30px
+    text-indent 10px
+    width 100%
+    margin 10px
+    transition all .5s
+    &:focus
+      border 1px solid #f2f2f2
+
+  input[type=radio]
+    visibility hidden
+
+  label
+    &.radio
+      cursor pointer
+      text-indent 35px
+      overflow visible
+      display inline-block
+      position relative
+      margin-bottom 15px
+      &:before
+        background #2980b9
+        content ''
+        position absolute
+        top 2px
+        left 0
+        width 20px
+        height 20px
+        border-radius 100%
+      &:after
+        opacity 0
+        content ''
+        position absolute
+        width 0.5em
+        height 0.25em
+        background transparent
+        top 7.5px
+        left 4.5px
+        border 3px solid #ffffff
+        border-top none
+        border-right none
+        -webkit-transform rotate(-45deg)
+        -moz-transform rotate(-45deg)
+        -o-transform rotate(-45deg)
+        -ms-transform rotate(-45deg)
+        transform rotate(-45deg)
+
+  input[type=radio]:checked
+    & + label
+      &:after
+        opacity 1
+
+//Select:
+.options
+  padding-left 10px
+  padding-right 10px
+.Dropdown-root
+  position relative
+
+.Dropdown-control
+  position relative
+  overflow hidden
+  background-color white
+  border 1px solid #ccc
+  border-radius 2px
+  box-sizing border-box
+  color #333
+  cursor default
+  outline none
+  padding 4px 52px 6px 10px
+  transition all 200ms ease
+
+.Dropdown-control:hover
+  box-shadow 0 1px 0 rgba(0, 0, 0, 0.06)
+
+.Dropdown-arrow
+  border-color #999 transparent transparent
+  border-style solid
+  border-width 5px 5px 0
+  content ' '
+  display block
+  height 0
+  margin-top -ceil(2.5)
+  position absolute
+  right 10px
+  top 14px
+  width 0
+
+.is-open .Dropdown-arrow
+  border-color transparent transparent #999
+  border-width 0 5px 5px
+
+.Dropdown-menu
+  background-color white
+  border 1px solid #ccc
+  box-shadow 0 1px 0 rgba(0, 0, 0, 0.06)
+  box-sizing border-box
+  margin-top -1px
+  max-height 200px
+  overflow-y auto
+  position absolute
+  top 100%
+  width 100%
+  z-index 1000
+  -webkit-overflow-scrolling touch
+
+.Dropdown-menu .Dropdown-group > .Dropdown-titl
+  padding 8px 10px
+  color rgba(51, 51, 51, 1)
+  font-weight bold
+  text-transform capitalize
+
+.Dropdown-option
+  box-sizing border-box
+  color rgba(51, 51, 51, 0.8)
+  cursor pointer
+  display block
+  padding 8px 10px
+
+.Dropdown-option:last-child
+  border-bottom-right-radius 2px
+  border-bottom-left-radius 2px
+
+.Dropdown-option:hover
+  background-color #f2f9fc
+  color #333
+
+.Dropdown-option.is-selected
+  background-color #f2f9fc
+  color #333
+
+.Dropdown-noresults
+  box-sizing border-box
+  color #ccc
+  cursor default
+  display block
+  padding 8px 10px
+
+
+//organizando os inputs
+.form-cadastrar
+  #nome
+    width 60%
+  #dt_nascimento
+    width 20%
+    margin-left 0 
+  #rg
+    width 15%
+    margin-right 0
+    margin-left 0
+  .gender
+    text-align center
+    margin-top 12px
+  #cpf
+    width 40%
+    float left
+  .maritalStatus-content
+    width 19%
+    float left 
+    margin-top 10px
+  #endereco
+    width 36%
+    margin-right 0
+  #complemento, #bairro, #email
+    float left
+    width 40%
+    clear both
+  #numero, #estado
+    float left
+    width 19%
+    margin-left 0
+  #cep, #telefone
+    width 36%
+    margin-left 0
+    margin-right 0
+  #descricao
+    width 56.3%
+    margin-left 0
+    margin-right 0
+  .select-package-content
+    width 40.2%
+    float left
+    clear both
+    margin-left 10px
+    margin-right 10px
+    margin-top 10px
+  .select-activities-content
+    width 30%
+    float left
+    margin-top 10px
+  .select-hasDependent-content
+    width 25.3%
+    margin-top 10px
+    margin-right 0
+    margin-left 10px
+    float left
+  p
+    margin-top -3px
+  .statusPayment-content
+    clear both
+    padding-top 23px
+    width 40.1%
+    margin-right 0
+    margin-left 10px
+    .naopagou
+      background-color rgba(255, 82, 0, 0.89)
+      color #FFF
+      padding 4px
+      text-indent 10px
+    .pagou
+      background-color #2980b9
+      color #FFF
+      padding 4px
+      text-indent 10px
