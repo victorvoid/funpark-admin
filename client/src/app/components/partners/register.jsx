@@ -34,7 +34,15 @@ export class Register extends Component{
                         <SelectPackage/>
                         <SelectActivities/>
                         <SelectHasDependent/>
-                        <StatusPayment/>
+                        <div className="pagamento-content">
+                            <p>Dados de Pagamento</p>
+                            <StatusPayment/>
+                            <input id="nome_cartao" type="text" placeholder="Nome do cartão"></input>
+                            <input id="numero_cartao" type="text" placeholder="Número do cartão"></input>
+                        </div>
+                        <div className="enviar-content">
+                            <input className="btn btn-active" type="submit" value="Cadastrar"></input>
+                        </div>
                     </form>
                 </div>
             </div>

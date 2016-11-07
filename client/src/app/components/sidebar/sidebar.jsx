@@ -10,16 +10,24 @@ export class Sidebar extends Component{
                 <div className="routes">
                     <ul>
                         <li>
-                            <Link to="/cadastrar">Cadastrar sócio</Link>
+                            <Link to="/cadastrar">
+                                <span className="icon-user-plus"></span>Cadastrar sócio
+                            </Link>
                         </li>
                         <li>
-                            <Link to='/socios'>Sócios</Link>
+                            <Link to='/socios'>
+                                <span className="icon-users"></span>Sócios
+                            </Link>
                         </li>
                         <li>
-                            <Link to='/pendentes'>Sócios pendentes</Link>
+                            <Link to='/pendentes'>
+                                <span className="icon-user-minus"></span>Sócios pendentes
+                            </Link>
                         </li>
                         <li>
-                            <Link to='/geraringresso'>Gerar Ingresso</Link>
+                            <Link to='/geraringresso'>
+                                <span className="icon-clipboard"></span>Gerar Ingresso
+                            </Link>
                         </li>
                     </ul>
                 </div>
