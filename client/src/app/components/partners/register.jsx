@@ -9,15 +9,46 @@ import {StatusPayment} from './form/statusPayment.jsx';
 export class Register extends Component{
     constructor(props){
         super(props);
+        this.state = {
+            nome: "", email: "", loading: false, errors: {}
+        }
+        this.enviaForm = this.enviaForm.bind(this);
+        this.setNome = this.setNome.bind(this);
     }
+
+    enviaForm(e){
+        e.preventDefault();
+        $.ajax({
+          url: '/partners/register',
+          type: 'POST',
+          contentType: "application/json",
+          dataType: "json",
+          data: JSON.stringify({
+            nome: this.state.nome,
+            email: this.state.email
+          }),
+          success: function(novaListagem){
+            this.setState({nome: '', email: ''});
+            console.log(novaListagem);
+          }.bind(this),
+          error: function(){
+            console.log('error');
+          }
+        })
+    }
+
+    setNome(e){
+        this.setState({nome: e.target.value});
+    }
+
     render(){
         return(
             <div className="cadastrar-socio">
                 <h2>Cadastrar novo sócio</h2>
                 <div className="form-cadastrar-content">
-                    <form method="POST" className="form-cadastrar">
+                    <form method="POST" className="form-cadastrar" ref='user_form' onSubmit={this.enviaForm}>
                         <InputGender/>
-                        <input id="nome" type="text" placeholder="Nome completo"></input>
+                        <input id="nome" type="text" placeholder="Nome completo" ref="nome" onChange="this.setNome"></input>
                         <input id="dt_nascimento" type="text" placeholder="Data de Nascimento"></input>
                         <input id="rg" type="text" placeholder="RG"></input>
                         <input id="cpf" type="text" placeholder="CPF"></input>

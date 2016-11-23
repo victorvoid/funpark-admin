@@ -1,89 +1,51 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-
+import {InputGender} from './form/inputGender.jsx';
+import {SelectMaritalStatus} from './form/selectMaritalStatus.jsx';
+import {SelectPackage} from './form/selectPackage.jsx';
+import {SelectActivities} from './form/selectActivities.jsx';
+import {SelectHasDependent} from './form/selectHasDependent.jsx';
+import {StatusPayment} from './form/statusPayment.jsx';
 export class Partner extends Component{
-
+    constructor(props){
+        super(props);
+    }
     render(){
         return(
-            <div className="wrapper">
-                <h2>Sócios</h2>
-                <div className="table">
-                    <div className="row header blue">
-                        <div className="cell">
-                            Username
+            <div className="cadastrar-socio">
+                <h2>Atualizar sócio</h2>
+                <div className="form-cadastrar-content">
+                    <form method="POST" className="form-cadastrar">
+                        <InputGender/>
+                        <input id="nome" type="text" placeholder="Nome completo"></input>
+                        <input id="dt_nascimento" type="text" placeholder="Data de Nascimento"></input>
+                        <input id="rg" type="text" placeholder="RG"></input>
+                        <input id="cpf" type="text" placeholder="CPF"></input>
+                        <SelectMaritalStatus/>
+                        <input id="endereco" type="text" placeholder="Endereço"></input>
+                        <input id="complemento" type="text" placeholder="Complemento"></input>
+                        <input id="numero" type="number" placeholder="Número"></input>
+                        <input id="cep" type="text" placeholder="CEP"></input>
+                        <input id="bairro" type="text" placeholder="Bairro"></input>
+                        <input id="estado" type="text" placeholder="Estado"></input>
+                        <input id="telefone" type="text" placeholder="Telefone"></input>
+                        <input id="email" type="email" placeholder="Email"></input>
+                        <input id="descricao" type="text" placeholder="Descrição"></input>
+                        <SelectPackage/>
+                        <SelectActivities/>
+                        <SelectHasDependent/>
+                        <div className="pagamento-content">
+                            <p>Dados de Pagamento</p>
+                            <StatusPayment/>
+                            <input id="nome_cartao" type="text" placeholder="Nome do cartão"></input>
+                            <input id="numero_cartao" type="text" placeholder="Número do cartão"></input>
                         </div>
-                        <div className="cell">
-                            Email
+                        <div className="enviar-content">
+                            <input className="btn btn-active" type="submit" value="Cadastrar"></input>
                         </div>
-                        <div className="cell">
-                            Password
-                        </div>
-                        <div className="cell">
-                            Active
-                        </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="cell">
-                                ninjalug
-                            </div>
-                            <div className="cell">
-                                misterninja@hotmail.com
-                            </div>
-                            <div className="cell">
-                                ************
-                            </div>
-                            <div className="cell">
-                                Yes
-                            </div>
-                            </div>
-
-                        <div className="row">
-                            <div className="cell">
-                                jsmith41
-                            </div>
-                            <div className="cell">
-                                joseph.smith@gmail.com
-                            </div>
-                            <div className="cell">
-                                ************
-                            </div>
-                            <div className="cell">
-                                No
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="cell">
-                                1337hax0r15
-                            </div>
-                            <div className="cell">
-                                hackerdude1000@aol.com
-                            </div>
-                            <div className="cell">
-                                ************
-                            </div>
-                            <div className="cell">
-                                Yes
-                            </div>
-                        </div>
-
-                        <div className="row">
-                            <div className="cell">
-                                hairyharry19
-                            </div>
-                            <div className="cell">
-                                harryharry@gmail.com
-                            </div>
-                            <div className="cell">
-                                ************
-                            </div>
-                            <div className="cell">
-                                Yes
-                            </div>
-                        </div>
+                    </form>
                 </div>
-             </div>
+            </div>
         );
     }
 }
