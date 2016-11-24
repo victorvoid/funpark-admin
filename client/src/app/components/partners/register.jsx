@@ -6,26 +6,68 @@ import {SelectPackage} from './form/selectPackage.jsx';
 import {SelectActivities} from './form/selectActivities.jsx';
 import {SelectHasDependent} from './form/selectHasDependent.jsx';
 import {StatusPayment} from './form/statusPayment.jsx';
+import $ from 'jquery/dist/jquery.min.js';
+
 export class Register extends Component{
     constructor(props){
         super(props);
         this.state = {
-            nome: "", email: "", loading: false, errors: {}
-        }
-        this.enviaForm = this.enviaForm.bind(this);
-        this.setNome = this.setNome.bind(this);
+            nome: "",
+            dt_nascimento: "",
+            rg: "",
+            cpf: "",
+            endereco: "",
+            complemento: "",
+            numero: "",
+            cep: "",
+            bairro: "",
+            estado: "",
+            telefone: "",
+            email: "",
+            descricao: "",
+            rg: "", 
+            loading: false, 
+            errors: {}
+        };
+
+        this.enviaForm          = this.enviaForm.bind(this);
+        this.setNome            = this.setNome.bind(this);
+        this.setDataNascimento  = this.setDataNascimento.bind(this);
+        this.setRg              = this.setRg.bind(this);
+        this.setCpf             = this.setCpf.bind(this);
+        this.setTelefone        = this.setTelefone.bind(this);
+        this.setEndereco        = this.setEndereco.bind(this);
+        this.setComplemento     = this.setComplemento.bind(this);
+        this.setNumero          = this.setNumero.bind(this);
+        this.setCep             = this.setCep.bind(this);
+        this.setBairro          = this.setBairro.bind(this);
+        this.setEstado          = this.setEstado.bind(this);
+        this.setEmail           = this.setEmail.bind(this);
+        this.setDescricao       = this.setDescricao.bind(this);
     }
 
     enviaForm(e){
         e.preventDefault();
         $.ajax({
-          url: '/partners/register',
+          url: 'http://localhost:3002/partners/register',
           type: 'POST',
           contentType: "application/json",
           dataType: "json",
           data: JSON.stringify({
             nome: this.state.nome,
-            email: this.state.email
+            dt_nascimento: this.state.dt_nascimento,
+            rg: this.state_rg,
+            cpf: this.state.cpf,
+            endereco: this.state.endereco,
+            complemento: this.state.complemento,
+            numero: this.state.numero,
+            cep: this.state.cep,
+            bairro: this.state.bairro,
+            estado: this.state.estado,
+            telefone: this.state.telefone,
+            email: this.state.email,
+            descricao: this.state.descricao,
+            rg: this.state.rg 
           }),
           success: function(novaListagem){
             this.setState({nome: '', email: ''});
@@ -41,6 +83,54 @@ export class Register extends Component{
         this.setState({nome: e.target.value});
     }
 
+    setDataNascimento(e){
+        this.setState({dt_nascimento: e.target.value});
+    }
+
+    setRg(e){
+        this.setState({rg: e.target.value});
+    }
+
+    setCpf(e){
+        this.setState({cpf: e.target.value});
+    }
+
+    setEndereco(e){
+        this.setState({cpf: e.target.value});
+    }
+
+    setComplemento(e){
+        this.setState({complemento: e.target.value});
+    }
+
+    setNumero(e){
+        this.setState({numero: e.target.value});
+    }
+
+    setCep(e){
+        this.setState({cep: e.target.value});
+    }
+
+    setBairro(e){
+        this.setState({bairro: e.target.value});
+    }
+
+    setEstado(e){
+        this.setState({estado: e.target.value});
+    }
+
+    setTelefone(e){
+        this.setState({telefone: e.target.value});
+    }
+
+    setEmail(e){
+        this.setState({email: e.target.value});
+    }
+
+    setDescricao(e){
+        this.setDescricao({descricao: e.target.value});
+    }
+
     render(){
         return(
             <div className="cadastrar-socio">
@@ -48,20 +138,20 @@ export class Register extends Component{
                 <div className="form-cadastrar-content">
                     <form method="POST" className="form-cadastrar" ref='user_form' onSubmit={this.enviaForm}>
                         <InputGender/>
-                        <input id="nome" type="text" placeholder="Nome completo" ref="nome" onChange="this.setNome"></input>
-                        <input id="dt_nascimento" type="text" placeholder="Data de Nascimento"></input>
-                        <input id="rg" type="text" placeholder="RG"></input>
-                        <input id="cpf" type="text" placeholder="CPF"></input>
+                        <input id="nome" type="text" placeholder="Nome completo" onChange={this.setNome}></input>
+                        <input id="dt_nascimento" type="text" placeholder="Data de Nascimento" onChange={this.setDataNascimento}></input>
+                        <input id="rg" type="text" placeholder="RG" onChange={this.setRg}></input>
+                        <input id="cpf" type="text" placeholder="CPF" onChange={this.setCpf}></input>
                         <SelectMaritalStatus/>
-                        <input id="endereco" type="text" placeholder="Endereço"></input>
-                        <input id="complemento" type="text" placeholder="Complemento"></input>
-                        <input id="numero" type="number" placeholder="Número"></input>
-                        <input id="cep" type="text" placeholder="CEP"></input>
-                        <input id="bairro" type="text" placeholder="Bairro"></input>
-                        <input id="estado" type="text" placeholder="Estado"></input>
-                        <input id="telefone" type="text" placeholder="Telefone"></input>
-                        <input id="email" type="email" placeholder="Email"></input>
-                        <input id="descricao" type="text" placeholder="Descrição"></input>
+                        <input id="endereco" type="text" placeholder="Endereço" onChange={this.setEndereco}></input>
+                        <input id="complemento" type="text" placeholder="Complemento" onChange={this.setComplemento}></input>
+                        <input id="numero" type="number" placeholder="Número" onChange={this.setNumero}></input>
+                        <input id="cep" type="text" placeholder="CEP" onChange={this.setCep}></input>
+                        <input id="bairro" type="text" placeholder="Bairro" onChange={this.setBairro}></input>
+                        <input id="estado" type="text" placeholder="Estado" onChange={this.setEstado}></input>
+                        <input id="telefone" type="text" placeholder="Telefone" onChange={this.setTelefone}></input>
+                        <input id="email" type="email" placeholder="Email" onChange={this.setEmail}></input>
+                        <input id="descricao" type="text" placeholder="Descrição" onChange={this.setDescricao}></input>
                         <SelectPackage/>
                         <SelectActivities/>
                         <SelectHasDependent/>

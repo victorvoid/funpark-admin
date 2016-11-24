@@ -1,11 +1,23 @@
 var Partner = require('../models/partner.js');
 
-exports.save = function(name, email, callback){
+exports.save = function(nome, email, dt_nascimento, rg, cpf, estado_civil, endereco, complemento, numero, cep, bairro, estado, telefone, callback){
   new Partner({
-    'name' : name,
-    'email': email
+    'nome': nome, 
+    'email': email, 
+    'dt_nascimento': dt_nascimento, 
+    'rg': rg, 
+    'cpf': cpf, 
+    'estado_civil': estado_civil, 
+    'endereco': endereco, 
+    'complemento': complemento, 
+    'numero': numero, 
+    'cep': cep, 
+    'bairro': bairro, 
+    'estado': estado, 
+    'telefone': telefone
   }).save(function(err, partner){
     if(err){
+      console.log(err);
       callback({error: 'It was not possible to create partner'});
     }else{
       callback(partner);
