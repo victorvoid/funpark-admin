@@ -63,6 +63,9 @@ export class Partners extends Component{
                         <div className="cell">
                             Estado
                         </div>
+                         <div className="cell">
+                            Excluir
+                        </div>
                     </div>
 
                     {
@@ -100,6 +103,9 @@ export class Partners extends Component{
                                         </div>
                                         <div className="cell">
                                             {partner.estado}
+                                        </div>
+                                        <div className="cell partners-remove-icon">
+                                            <span className="icon-cross"></span>
                                         </div>
                                     </div>
                         })
