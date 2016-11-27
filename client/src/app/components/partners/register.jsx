@@ -134,7 +134,7 @@ export class Register extends Component{
     }
 
     setDescricao(e){
-        this.setDescricao({descricao: e.target.value});
+        this.setState({descricao: e.target.value});
     }
     setGenero(e){
         this.setState({genero: e.target.value});

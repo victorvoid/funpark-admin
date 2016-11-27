@@ -9,6 +9,12 @@ export class Partners extends Component{
         this.state = {
             partners: []
         };
+        this.removePartner = this.removePartner.bind(this);
+        this.atualizaLista = this.atualizaLista.bind(this);
+        this.atualizaLista();
+    }
+    
+    atualizaLista(){
         $.ajax({
             type:"GET",
             url: "http://localhost:3002/partners",
@@ -25,9 +31,20 @@ export class Partners extends Component{
             }
         });
     }
-    
-    removePartner(id){
 
+    removePartner(id){
+       $.ajax({
+            type:"DELETE",
+            url: 'http://localhost:3002/partners/delete/'+id,
+            success: (msg) => {
+               console.log("Sócio deletado com sucesso.", msg);
+               console.log(msg);
+            },
+            error: (err) => {
+                console.log('Erro: ', err);
+            }
+        });
+        this.atualizaLista();
     }
 
     render(){
@@ -81,7 +98,7 @@ export class Partners extends Component{
                     </div>
 
                     {
-                        this.state.partners.map(function(partner) {
+                        this.state.partners.map((partner) => {
                             return <div className="row">
                                         <div className="cell">
                                             <span key={partner._id}><Link to={`/socio/${partner._id}`}>{partner.nome}</Link></span>
@@ -119,7 +136,7 @@ export class Partners extends Component{
                                         <div className="cell">
                                             {partner.estado}
                                         </div>
-                                        <div className="cell partners-remove-icon">
+                                        <div className="cell partners-remove-icon" onClick={this.removePartner.bind(this, partner._id)}>
                                             <span className="icon-cross"></span>
                                         </div>
                                     </div>
