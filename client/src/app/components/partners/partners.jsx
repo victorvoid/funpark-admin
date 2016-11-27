@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
-import $ from 'jQuery/dist/jquery.min.js';
+import $ from 'jquery/dist/jquery.min.js';
 
 
 export class Partners extends Component{
@@ -8,19 +8,28 @@ export class Partners extends Component{
         super(props);
         this.state = {
             partners: []
-        }
+        };
         $.ajax({
             type:"GET",
             url: "http://localhost:3002/partners",
             headers: {
-                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXNzd29yZCI6ImFkbWluIiwiaWF0IjoxNDc5OTI0NjM3fQ.wS27uXUjz-egpgBH4DYWbBk-PzEYY6WTVe3IRm7qZkQ'
+                'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTHVjYXMiLCJwYXNzd29yZCI6IjEyMzEyMyIsImlhdCI6MTQ3ODM1NzEzMH0.B4ZqJYxNE4UoGdDEeAKE2a0u_p8vBRaxUSs8kbgXvJ8'
             },
             success: (msg) => {
-               this.setState({partners: msg})
+               this.setState({partners: msg});
                console.log("Requisicão feita com sucesso.", msg);
+               console.log(msg);
+            },
+            error: (err) => {
+                console.log('Erro: ', err);
             }
         });
     }
+    
+    removePartner(id){
+
+    }
+
     render(){
         return(
             <div className="wrapper">
@@ -37,13 +46,16 @@ export class Partners extends Component{
                             Email
                         </div>
                         <div className="cell">
-                            Data de Nascimento
+                            Nascimento
+                        </div>
+                        <div className="cell">
+                            Genero
                         </div>
                         <div className="cell">
                             RG
                         </div>
                         <div className="cell">
-                            Estado Civil
+                            Est Civil
                         </div>
                         <div className="cell">
                             Endereço
@@ -79,6 +91,9 @@ export class Partners extends Component{
                                         </div>
                                         <div className="cell">
                                             {partner.dt_nascimento}
+                                        </div>
+                                        <div className="cell">
+                                            {partner.genero}
                                         </div>
                                         <div className="cell">
                                             {partner.rg}

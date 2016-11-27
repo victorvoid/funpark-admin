@@ -16,6 +16,8 @@ export class Register extends Component{
             dt_nascimento: "",
             rg: "",
             cpf: "",
+            genero: "masculino",
+            estado_civil: "solteiro",
             endereco: "",
             complemento: "",
             numero: "",
@@ -44,6 +46,8 @@ export class Register extends Component{
         this.setEstado          = this.setEstado.bind(this);
         this.setEmail           = this.setEmail.bind(this);
         this.setDescricao       = this.setDescricao.bind(this);
+        this.setGenero          = this.setGenero.bind(this);
+        this.setEstadoCivil     = this.setEstadoCivil.bind(this);
     }
 
     enviaForm(e){
@@ -67,7 +71,9 @@ export class Register extends Component{
             telefone: this.state.telefone,
             email: this.state.email,
             descricao: this.state.descricao,
-            rg: this.state.rg 
+            rg: this.state.rg,
+            genero: this.state.genero,
+            estado_civil: this.state.estado_civil
           }),
           success: function(novaListagem){
             this.setState({nome: '', email: ''});
@@ -96,7 +102,7 @@ export class Register extends Component{
     }
 
     setEndereco(e){
-        this.setState({cpf: e.target.value});
+        this.setState({endereco: e.target.value});
     }
 
     setComplemento(e){
@@ -130,19 +136,26 @@ export class Register extends Component{
     setDescricao(e){
         this.setDescricao({descricao: e.target.value});
     }
-
+    setGenero(e){
+        this.setState({genero: e.target.value});
+    }
+    setEstadoCivil(option){
+        console.log('estado civil: ', option);
+        console.log('estado civil: ', option.value);
+        this.setState({estado_civil: option.value});        
+    }
     render(){
         return(
             <div className="cadastrar-socio">
                 <h2>Cadastrar novo sócio</h2>
                 <div className="form-cadastrar-content">
                     <form method="POST" className="form-cadastrar" ref='user_form' onSubmit={this.enviaForm}>
-                        <InputGender/>
+                        <InputGender onChange={this.setGenero} value={this.state.genero}/>
                         <input id="nome" type="text" placeholder="Nome completo" onChange={this.setNome}></input>
                         <input id="dt_nascimento" type="text" placeholder="Data de Nascimento" onChange={this.setDataNascimento}></input>
                         <input id="rg" type="text" placeholder="RG" onChange={this.setRg}></input>
                         <input id="cpf" type="text" placeholder="CPF" onChange={this.setCpf}></input>
-                        <SelectMaritalStatus/>
+                        <SelectMaritalStatus value={this.state.estado_civil} onChange={this.setEstadoCivil}/>
                         <input id="endereco" type="text" placeholder="Endereço" onChange={this.setEndereco}></input>
                         <input id="complemento" type="text" placeholder="Complemento" onChange={this.setComplemento}></input>
                         <input id="numero" type="number" placeholder="Número" onChange={this.setNumero}></input>

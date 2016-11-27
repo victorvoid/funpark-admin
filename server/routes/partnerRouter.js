@@ -56,14 +56,16 @@ router.post('/register', function(req, res){
   var numero_cartao = req.body.numero_cartao;
   var status_pagamento = req.body.status_pagamento;
   var email         = req.body.email;
+  var genero         = req.body.genero;
 
-  partnerController.save(nome, email, dt_nascimento, rg, cpf, estado_civil, endereco, complemento, numero, cep, bairro, estado, telefone, function(resp){
+  partnerController.save(nome, email, dt_nascimento, rg, cpf, estado_civil, endereco, complemento, numero, cep, bairro, estado, telefone, genero, function(resp){
     res.json(resp);
   });
 });
 
 router.delete('/delete/:id', function(req, res){
   var id = req.params.id;
+  console.log('id: ',id);
   partnerController.delete(id, function(resp){
     res.json(resp);
   });

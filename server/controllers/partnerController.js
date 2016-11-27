@@ -1,6 +1,6 @@
 var Partner = require('../models/partner.js');
 
-exports.save = function(nome, email, dt_nascimento, rg, cpf, estado_civil, endereco, complemento, numero, cep, bairro, estado, telefone, callback){
+exports.save = function(nome, email, dt_nascimento, rg, cpf, estado_civil, endereco, complemento, numero, cep, bairro, estado, telefone, genero, callback){
   new Partner({
     'nome': nome, 
     'email': email, 
@@ -14,7 +14,8 @@ exports.save = function(nome, email, dt_nascimento, rg, cpf, estado_civil, ender
     'cep': cep, 
     'bairro': bairro, 
     'estado': estado, 
-    'telefone': telefone
+    'telefone': telefone,
+    'genero': genero
   }).save(function(err, partner){
     if(err){
       console.log(err);

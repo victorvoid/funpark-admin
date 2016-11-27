@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var PartnerSchema = new Schema({
+  genero: String,
   nome: String,
   dt_nascimento: String,
   rg: String,

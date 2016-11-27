@@ -9,20 +9,16 @@ export class SelectMaritalStatus extends Component{
             options: [
                 { value: 'solteiro', label: 'Solteiro' },
                 { value: 'casado'  , label: 'Casado'   }
-            ],
-            selected: 0
-		    };
-        this._onSelect = this._onSelect.bind(this);
+            ]
+		};
     }
-    _onSelect (option) {
-        this.setState({selected: option});
-    }
+
     render(){
         return(
             <div className="maritalStatus-content">
                 <Dropdown
                     options={this.state.options}
-                    onChange={this._onSelect}
+                    onChange={this.props.onChange}
                     value={this.state.options[0]}
                     placeholder="Selecione o Estado Civil"
                 />
