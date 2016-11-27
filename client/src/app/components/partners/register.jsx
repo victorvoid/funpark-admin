@@ -27,7 +27,8 @@ export class Register extends Component{
             telefone: "",
             email: "",
             descricao: "",
-            rg: "", 
+            rg: "",
+            pendente: false,
             loading: false, 
             errors: {}
         };
@@ -49,7 +50,10 @@ export class Register extends Component{
         this.setGenero          = this.setGenero.bind(this);
         this.setEstadoCivil     = this.setEstadoCivil.bind(this);
     }
-
+    /*
+    * Responsável no enviar dos dados para o banco através de uma requisição ajax.
+    * @params {:event}
+    */
     enviaForm(e){
         e.preventDefault();
         $.ajax({
@@ -73,7 +77,8 @@ export class Register extends Component{
             descricao: this.state.descricao,
             rg: this.state.rg,
             genero: this.state.genero,
-            estado_civil: this.state.estado_civil
+            estado_civil: this.state.estado_civil,
+            pendente: this.state.pendente
           }),
           success: function(novaListagem){
             this.setState({nome: '', email: ''});

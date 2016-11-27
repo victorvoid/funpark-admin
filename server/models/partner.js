@@ -22,7 +22,8 @@ var PartnerSchema = new Schema({
   dependente: Boolean,
   nome_cartao: String,
   numero_cartao: String,
-  status_pagamento: Boolean
+  status_pagamento: Boolean,
+  pendente: Boolean
 });
 
 module.exports = mongoose.model('Partners', PartnerSchema);
